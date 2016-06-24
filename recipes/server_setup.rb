@@ -51,8 +51,8 @@ node['gluster']['server']['volumes'].each do |volume_name, volume_values|
     # Save the array of bricks to the node's attributes
     node.set['gluster']['server']['volumes'][volume_name]['bricks'] = bricks
 
-    Chef::Log.warn('bricks: #{bricks}')
-    Chef::Log.warn("node.set bricks: #{node['gluster']['server']['volumes'][volume_name]['bricks']}")
+    Chef::Log.warn("local bricks variable: #{bricks}")
+    Chef::Log.warn("node['gluster']['server']['volumes'][volume_name]['bricks']: #{node['gluster']['server']['volumes'][volume_name]['bricks']}")
   else
     Chef::Log.warn('This server is not configured for this volume')
   end

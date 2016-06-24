@@ -21,7 +21,7 @@ node['gluster']['server']['volumes'].each do |volume_name, volume_values|
       node.default['gluster']['server']['volumes'][volume_name]['bricks_waiting_to_join'] = ''
     end
 
-    peer_bricks = chef_node['gluster']['server']['volumes'][volume_name]['bricks'].select { |brick| brick.include? volume_name }
+    peer_bricks = node['gluster']['server']['volumes'][volume_name]['bricks'].select { |brick| brick.include? volume_name }
     brick_count += (peer_bricks.count || 0)
     peer_bricks.each do |brick|
       peer_name = if volume_values.attribute?('peer_names')
