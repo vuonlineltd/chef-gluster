@@ -50,6 +50,9 @@ node['gluster']['server']['volumes'].each do |volume_name, volume_values|
     bricks << "#{node['gluster']['server']['brick_mount_path']}/#{volume_name}/brick"
     # Save the array of bricks to the node's attributes
     node.set['gluster']['server']['volumes'][volume_name]['bricks'] = bricks
+
+    Chef::Log.warn('bricks: #{bricks}')
+    Chef::Log.warn("node.set bricks: #{node['gluster']['server']['volumes'][volume_name]['bricks']}")
   else
     Chef::Log.warn('This server is not configured for this volume')
   end
